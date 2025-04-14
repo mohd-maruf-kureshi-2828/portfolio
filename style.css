@@ -256,16 +256,32 @@
 
 /* chrome editing */
 .open-in-chrome-banner {
+  position: relative;
   background: #111;
   color: #fff;
-  padding: 12px;
+  padding: 12px 40px 12px 12px;
   text-align: center;
   font-size: 14px;
-  animation: popIn 0.8s ease-in-out;
   font-family: 'Poppins', sans-serif;
+  animation: popIn 0.8s ease-in-out;
+  z-index: 9999;
 }
 
 @keyframes popIn {
   from { opacity: 0; transform: translateY(-10px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+.close-banner {
+  position: absolute;
+  right: 12px;
+  top: 8px;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close-banner:hover {
+  color: #f00;
 }
