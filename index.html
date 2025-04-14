@@ -201,6 +201,10 @@
     </style> -->
   </head>
   <body>
+<!-- //open in chrome instgram ho ya facebook ho browser default apne he browser me open karta he apka website ko isliye open he chrome add kiye -->
+    <div class="open-in-chrome-banner" id="chromeBanner" style="display: none;">
+      For best experience, tap 3 dots (•••) and select "Open in Chrome"
+    </div>
     <header>
       <div class="typewriter hero-text">Hey, I'm Maruf Kureshi</div>
       <p>
@@ -277,6 +281,14 @@
     </footer>
 
     <script>
+        // Instagram in-app browser detect
+    const ua = navigator.userAgent || navigator.vendor || window.opera;
+    const isInstagram = ua.indexOf("Instagram") > -1;
+
+     if (isInstagram) {
+       document.getElementById("chromeBanner").style.display = "block";
+     }
+      //chrome logic end here
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
