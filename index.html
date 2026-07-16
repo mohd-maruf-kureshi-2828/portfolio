@@ -1,168 +1,327 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Maruf | Creative Developer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Poppins:wght@400;700&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mohamed Maruf Kureshi | Creative Application Developer</title>
+<meta name="description" content="Portfolio of Mohamed Maruf Kureshi — Creative Application Developer building clean, functional web experiences with HTML, CSS, JS, React, Python & Django.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-  <!-- //open in chrome instgram ho ya facebook ho browser default apne he browser me open karta he apka website ko isliye open he chrome add kiye -->
-  <div class="open-in-chrome-banner" id="chromeBanner" style="display: none;">
-    <span class="close-banner" onclick="document.getElementById('chromeBanner').style.display='none'">&times;</span>
-    For best experience, tap 3 dots (•••) and select "Open in Chrome"
+
+<!-- ===== ANIMATED CYBER BACKGROUND ===== -->
+<canvas id="webglCanvas"></canvas>
+<canvas id="bgCanvas"></canvas>
+
+<!-- open in chrome banner (in-app browser fix) -->
+<div class="open-in-chrome-banner" id="chromeBanner" style="display:none;">
+  <span class="close-banner" onclick="document.getElementById('chromeBanner').style.display='none'">&times;</span>
+  For best experience, tap the ••• menu and select "Open in Chrome"
+</div>
+
+<!-- ===== NAV : file-tab style ===== -->
+<header class="topnav">
+  <div class="nav-inner">
+    <a href="#home" class="brand"><span class="dot"></span>maruf<span class="brand-accent">.dev</span></a>
+
+    <nav class="tabs" id="tabs">
+      <a href="#about" class="tab" data-tab>about<span>.js</span></a>
+      <a href="#skills" class="tab" data-tab>skills<span>.py</span></a>
+      <a href="#projects" class="tab" data-tab>projects<span>.md</span></a>
+      <a href="#contact" class="tab" data-tab>contact<span>.sh</span></a>
+    </nav>
+
+    <div class="nav-right">
+      <button class="burger" id="burgerBtn" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
+    </div>
   </div>
-  <header>
-    <div class="typewriter hero-text">Hey, I'm <br>Mohamed Maruf Kureshi</div>
-    <p>
-      Creative Application Developer | Passionate about Web Developer & clean design
-    </p>
-    <div class="scroll-indicator">⬇</div>
-  </header>
-  <section id="about">
-    <h2>About Me</h2>
-    <div class="card">
-      <h3>Hello! 👋</h3>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>
+  <a href="#about">about<span>.js</span></a>
+  <a href="#skills">skills<span>.py</span></a>
+  <a href="#projects">projects<span>.md</span></a>
+  <a href="#contact">contact<span>.sh</span></a>
+</div>
+
+<!-- ===== HERO : terminal window ===== -->
+<section id="home" class="hero">
+  <div class="hero-bg-grid"></div>
+  <div class="grid-floor-wrap"><div class="grid-floor"></div></div>
+  <div class="hero-glow g1"></div>
+  <div class="hero-glow g2"></div>
+
+  <div class="terminal" id="tiltCard">
+    <div class="terminal-inner">
+    <div class="terminal-bar">
+      <div class="tl-win-title"><i class="fa-solid fa-terminal"></i> Windows PowerShell — guest@portfolio</div>
+      <div class="tl-win-controls">
+        <span class="win-btn min"><i class="fa-solid fa-minus"></i></span>
+        <span class="win-btn max"><i class="fa-regular fa-square"></i></span>
+        <span class="win-btn close"><i class="fa-solid fa-xmark"></i></span>
+      </div>
+    </div>
+    <div class="terminal-body">
+      <p class="tl-line"><span class="prompt">PS C:\Users\guest&gt;</span> whoami</p>
+      <h1 class="tl-output name-output" id="typedName"></h1>
+      <p class="tl-line"><span class="prompt">PS C:\Users\guest&gt;</span> cat .\role.txt</p>
+      <p class="tl-output role-output">&gt; Creative Application Developer — passionate about Web Development &amp; clean design</p>
+      <p class="tl-line static-cursor"><span class="prompt">PS C:\Users\guest&gt;</span> <span class="cursor-block">&nbsp;</span></p>
+
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn-primary"><i class="fa-solid fa-folder-open"></i> View Projects</a>
+        <a href="#contact" class="btn btn-ghost"><i class="fa-regular fa-paper-plane"></i> Get In Touch</a>
+      </div>
+
+      <div class="hero-status">
+        <span class="status-pill"><span class="pulse-dot"></span> Open to work</span>
+        <span class="status-sep">|</span>
+        <span class="status-item"><i class="fa-solid fa-location-dot"></i> Based in India</span>
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <div class="hero-socials">
+    <a href="https://github.com/mohd-maruf-kureshi-2828" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+    <a href="https://www.linkedin.com/in/mohamed-maruf-kureshi-67357235b" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+    <a href="https://www.instagram.com/mohamed_maruf_kureshi" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+    <a href="mailto:mohamedmarufkureshikureshi@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+  </div>
+
+  <a href="#about" class="scroll-indicator" aria-label="Scroll down"><i class="fa-solid fa-chevron-down"></i></a>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section id="about" class="section">
+  <p class="cmd-heading"><span class="prompt">PS&gt;</span> Get-Content .\about.txt</p>
+  <h2 class="section-title">About Me</h2>
+
+  <div class="about-grid">
+    <div class="about-card">
+      <div class="file-tab-mini">about.txt</div>
       <p>
-        I'm a passionate beginner in the world of web development. I love
-        coding for fun and enjoy building creative and interactive websites.
-        Fitness is also an important part of my life — I truly enjoy going to
-        the gym and pushing my limits. With a positive mindset and constant
-        curiosity, I'm excited to grow every day as a developer.
+        Hey, I'm Maruf 👋 — a passionate beginner in the world of web development who genuinely loves
+        turning ideas into interactive, working products. I enjoy the entire process: breaking a problem down,
+        writing the code, and watching it come alive in the browser.
+      </p>
+      <p>
+        Outside the editor, fitness keeps me grounded — I show up at the gym as consistently as I show up to debug
+        code, because both are about showing up daily and getting a little better each time. That same discipline
+        drives how I learn: curious, consistent, and always building something new.
       </p>
     </div>
-  </section>
 
-  <section id="skills">
-    <h2>Skills</h2>
-    <div class="grid">
-      <div class="card">HTML</div>
-      <div class="card">CSS & Animations</div>
-      <div class="card">Bootstrap</div>
-      <div class="card">JavaScript</div>
-      <div class="card">React</div>
-      <div class="card">Python</div>
-      <div class="card">Django</div>
-      <div class="card">MySql</div>
-      <div class="card">Git & GitHub</div>
-    </div>
-  </section>
-
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>Robotic Themed Calculator</h3>
-        <p>A fully animated responsive calculator with a futuristic look and dark them.</p>
-        <a href="https://mohd-maruf-kureshi-2828.github.io/calculator/" target="_blank">live Demo</a>
+    <div class="about-side">
+      <div class="stat-chip">
+        <i class="fa-solid fa-code"></i>
+        <div><h4>Full-Stack</h4><p>Frontend to backend, one stack at a time</p></div>
       </div>
-      <div class="card">
-        <h3>Typing Speed Game</h3>
-        <p>Real-time typing game to test speed accurary and WPM - built with pure HTML CSS And JavaScript.</p>
-        <a href="https://mohd-maruf-kureshi-2828.github.io/typing_speed_game/" target="_blank">live Demo</a>
+      <div class="stat-chip">
+        <i class="fa-solid fa-dumbbell"></i>
+        <div><h4>Discipline</h4><p>Gym mindset applied to code &amp; growth</p></div>
       </div>
-      <div class="card">
-        <h3>Currency Converter</h3>
-        <p>Convert currencies in real-time using a React app integrated with a free API. Features accurate conversion,
-          responsive design, and smooth user experience.</p>
-        <a href="https://mohd-maruf-kureshi-2828.github.io/Currency_Converter/" target="_blank">Live Demo</a>
-      </div>
-      <div class="card">
-        <h3>Employee Management System</h3>
-        <p>Manage employee details efficiently with this React-based app using a free API. Features real-time data
-          display, responsive design, and smooth user interactions.</p>
-        <a href="https://mohd-maruf-kureshi-2828.github.io/employee_management_app/" target="_blank">Live Demo</a>
-      </div>
-      <div class="card">
-        <h3>CarGalaxy – Full Stack Car Showroom Website</h3>
-        <p>
-          A dynamic full-stack web application built using <b>Django</b> and <b>PostgreSQL</b>, designed for showcasing
-          luxury cars with admin control.
-          Features include real-time car management through the Django Admin Panel, user contact form integration,
-          responsive design,
-          and GitHub<b>Project Repository</b>.
-        </p>
-        <a href="https://github.com/mohd-maruf-kureshi-2828/Car_Project_Using_Django" target="_blank">Live Demo</a>
-      </div>
-      <div class="card">
-        <h3>AI Fitness Coach – Learning-Based Full Stack Project</h3>
-        <p>
-          An interactive fitness planning web app developed while learning <b>Full Stack Development</b>.
-          Built with <b>Next.js</b>, <b>React</b>, and modern UI practices, the app allows users to generate
-           customized workout and diet plans.
-           Includes features like theme toggle, PDF download, responsive design, and real-world deployment on <b>Vercel</b>.
-        </p>
-        <a href="https://ai-fitness-coach-3552gtlu3-maruf-kureshis-projects.vercel.app/" target="_blank">
-          Live Demo
-        </a>
-     </div> 
-      <div class="card">
-        <h3>Project</h3>
-        <p>Coming Soon.......</p>
-        <a href="https://github.com/mohd-maruf-kureshi-2828" target="_blank">View on GitHub</a>
+      <div class="stat-chip">
+        <i class="fa-solid fa-seedling"></i>
+        <div><h4>Always Learning</h4><p>New tools, new frameworks, every week</p></div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p class="contact-text">
-      Email: <a
-        href="mailto:mohamedmarufkureshikureshi@gmail.com?subject=Let's Work Together&body=Hi Maruf, I checked your portfolio and...">
-        mohamedmarufkureshikureshi@gmail.com
-      </a>
+<!-- ===== SKILLS ===== -->
+<section id="skills" class="section">
+  <p class="cmd-heading"><span class="prompt">PS&gt;</span> Get-ChildItem .\skills</p>
+  <h2 class="section-title">Skills &amp; Tools</h2>
 
-    </p>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-ic" style="background:#e34c26">5</div>
+      <div class="skill-meta"><h5>HTML</h5><span class="tag">frontend</span></div>
+      <div class="skill-bar"><i style="width:92%"></i></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-ic" style="background:#264de4">3</div>
+      <div class="skill-meta"><h5>CSS &amp; Animations</h5><span class="tag">frontend</span></div>
+      <div class="skill-bar"><i style="width:88%"></i></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-ic" style="background:#7952b3">B</div>
+      <div class="skill-meta"><h5>Bootstrap</h5><span class="tag">frontend</span></div>
+      <div class="skill-bar"><i style="width:80%"></i></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-ic" style="background:#f7df1e;color:#111">JS</div>
+      <div class="skill-meta"><h5>JavaScript</h5><span class="tag">frontend</span></div>
+      <div class="skill-bar"><i style="width:82%"></i></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-ic" style="background:#0b1220;color:#61dafb">⚛</div>
+      <div class="skill-meta"><h5>React</h5><span class="tag">frontend</span></div>
+      <div class="skill-bar"><i style="width:75%"></i></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-ic" style="background:#3776ab;color:#ffd43b">🐍</div>
+      <div class="skill-meta"><h5>Python</h5><span class="tag">backend</span></div>
+      <div class="skill-bar"><i style="width:78%"></i></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-ic" style="background:#092e20">Dj</div>
+      <div class="skill-meta"><h5>Django</h5><span class="tag">backend</span></div>
+      <div class="skill-bar"><i style="width:72%"></i></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-ic" style="background:#00618a">DB</div>
+      <div class="skill-meta"><h5>MySQL</h5><span class="tag">database</span></div>
+      <div class="skill-bar"><i style="width:70%"></i></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-ic" style="background:#f1502f">Git</div>
+      <div class="skill-meta"><h5>Git &amp; GitHub</h5><span class="tag">tools</span></div>
+      <div class="skill-bar"><i style="width:85%"></i></div>
+    </div>
+  </div>
+</section>
 
-    <p class="contact-text">
-      LinkedIn:
-      <a href="https://www.linkedin.com/in/mohamed-maruf-kureshi-67357235b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
-        target="_blank">@Mohammed_maruf_kureshi</a>
-    </p>
-    <p class="contact-text">
-      Instagram:
-      <a href="https://www.instagram.com/mohamed_maruf_kureshi?igsh=dmJnbmFiM2tlemMx"
-        target="_blank">@Mohammed_maruf_kureshi</a>
-    </p>
-  </section>
+<!-- ===== PROJECTS ===== -->
+<section id="projects" class="section">
+  <p class="cmd-heading"><span class="prompt">PS&gt;</span> .\run-projects.ps1</p>
+  <h2 class="section-title">Projects</h2>
 
-  <footer>
-    <p>&copy; 2025 Maruf. All rights reserved.</p>
-  </footer>
+  <div class="projects-grid">
 
-  <script>
-    // Instagram in-app browser detect
-    const ua = navigator.userAgent || navigator.vendor || window.opera;
-    const isInstagram = ua.indexOf("Instagram") > -1;
+    <article class="repo-card">
+      <div class="repo-top">
+        <div class="repo-name"><i class="fa-solid fa-folder"></i> robotic-calculator</div>
+        <span class="repo-badge">public</span>
+      </div>
+      <p class="repo-desc">A fully animated, responsive calculator with a futuristic look and dark theme.</p>
+      <div class="repo-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+      <div class="repo-actions">
+        <a href="https://mohd-maruf-kureshi-2828.github.io/calculator/" target="_blank" rel="noopener noreferrer" class="repo-btn primary"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
+      </div>
+    </article>
 
-    if (isInstagram) {
-      document.getElementById("chromeBanner").style.display = "block";
-    }
+    <article class="repo-card">
+      <div class="repo-top">
+        <div class="repo-name"><i class="fa-solid fa-folder"></i> typing-speed-game</div>
+        <span class="repo-badge">public</span>
+      </div>
+      <p class="repo-desc">Real-time typing game to test speed, accuracy and WPM — built with pure HTML, CSS and JavaScript.</p>
+      <div class="repo-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+      <div class="repo-actions">
+        <a href="https://mohd-maruf-kureshi-2828.github.io/typing_speed_game/" target="_blank" rel="noopener noreferrer" class="repo-btn primary"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
+      </div>
+    </article>
 
-    //chrome logic end here
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
+    <article class="repo-card">
+      <div class="repo-top">
+        <div class="repo-name"><i class="fa-solid fa-folder"></i> currency-converter</div>
+        <span class="repo-badge">public</span>
+      </div>
+      <p class="repo-desc">Convert currencies in real-time using a React app integrated with a free API — accurate conversion, responsive design, smooth UX.</p>
+      <div class="repo-tags"><span>React</span><span>API</span><span>CSS</span></div>
+      <div class="repo-actions">
+        <a href="https://mohd-maruf-kureshi-2828.github.io/Currency_Converter/" target="_blank" rel="noopener noreferrer" class="repo-btn primary"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
+      </div>
+    </article>
 
-    document
-      .querySelectorAll("section")
-      .forEach((sec) => observer.observe(sec));
-  </script>
+    <article class="repo-card">
+      <div class="repo-top">
+        <div class="repo-name"><i class="fa-solid fa-folder"></i> employee-management-app</div>
+        <span class="repo-badge">public</span>
+      </div>
+      <p class="repo-desc">Manage employee details efficiently with this React-based app using a free API — real-time data display and responsive design.</p>
+      <div class="repo-tags"><span>React</span><span>API</span><span>JavaScript</span></div>
+      <div class="repo-actions">
+        <a href="https://mohd-maruf-kureshi-2828.github.io/employee_management_app/" target="_blank" rel="noopener noreferrer" class="repo-btn primary"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
+      </div>
+    </article>
+
+    <article class="repo-card featured">
+      <div class="repo-top">
+        <div class="repo-name"><i class="fa-solid fa-folder"></i> cargalaxy</div>
+        <span class="repo-badge">full-stack</span>
+      </div>
+      <p class="repo-desc">A dynamic full-stack car showroom app built with <b>Django</b> and <b>PostgreSQL</b> — real-time car management via the Django Admin Panel, plus a user contact form and responsive design.</p>
+      <div class="repo-tags"><span>Django</span><span>PostgreSQL</span><span>Admin Panel</span></div>
+      <div class="repo-actions">
+        <a href="https://github.com/mohd-maruf-kureshi-2828/Car_Project_Using_Django" target="_blank" rel="noopener noreferrer" class="repo-btn primary"><i class="fa-brands fa-github"></i> Repository</a>
+      </div>
+    </article>
+
+    <article class="repo-card featured">
+      <div class="repo-top">
+        <div class="repo-name"><i class="fa-solid fa-folder"></i> ai-fitness-coach</div>
+        <span class="repo-badge">full-stack</span>
+      </div>
+      <p class="repo-desc">An interactive fitness planning app built while learning full-stack development with <b>Next.js</b> and <b>React</b> — generates custom workout &amp; diet plans, with theme toggle, PDF export, and deployment on Vercel.</p>
+      <div class="repo-tags"><span>Next.js</span><span>React</span><span>Vercel</span></div>
+      <div class="repo-actions">
+        <a href="https://ai-fitness-coach-3552gtlu3-maruf-kureshis-projects.vercel.app/" target="_blank" rel="noopener noreferrer" class="repo-btn primary"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
+      </div>
+    </article>
+
+    <article class="repo-card">
+      <div class="repo-top">
+        <div class="repo-name"><i class="fa-solid fa-folder-plus"></i> next-project</div>
+        <span class="repo-badge">building</span>
+      </div>
+      <p class="repo-desc">Something new is always in the works. Follow along on GitHub to see what's shipping next.</p>
+      <div class="repo-tags"><span>coming soon</span></div>
+      <div class="repo-actions">
+        <a href="https://github.com/mohd-maruf-kureshi-2828" target="_blank" rel="noopener noreferrer" class="repo-btn"><i class="fa-brands fa-github"></i> View GitHub</a>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact" class="section">
+  <p class="cmd-heading"><span class="prompt">PS&gt;</span> Connect-With -Maruf</p>
+  <h2 class="section-title">Let's Build Something</h2>
+  <p class="contact-lead">Have a project, an opportunity, or just want to talk code &amp; gym gains? My inbox is always open.</p>
+
+  <div class="contact-rows">
+    <a class="contact-row" href="mailto:mohamedmarufkureshikureshi@gmail.com?subject=Let's Work Together&body=Hi Maruf, I checked your portfolio and...">
+      <span class="crow-key"><i class="fa-solid fa-envelope"></i> email</span>
+      <span class="crow-val">mohamedmarufkureshikureshi@gmail.com</span>
+      <span class="crow-go"><i class="fa-solid fa-arrow-right"></i></span>
+    </a>
+    <a class="contact-row" href="https://www.linkedin.com/in/mohamed-maruf-kureshi-67357235b" target="_blank" rel="noopener noreferrer">
+      <span class="crow-key"><i class="fa-brands fa-linkedin-in"></i> linkedin</span>
+      <span class="crow-val">@Mohamed_maruf_kureshi</span>
+      <span class="crow-go"><i class="fa-solid fa-arrow-right"></i></span>
+    </a>
+    <a class="contact-row" href="https://www.instagram.com/mohamed_maruf_kureshi" target="_blank" rel="noopener noreferrer">
+      <span class="crow-key"><i class="fa-brands fa-instagram"></i> instagram</span>
+      <span class="crow-val">@mohamed_maruf_kureshi</span>
+      <span class="crow-go"><i class="fa-solid fa-arrow-right"></i></span>
+    </a>
+    <a class="contact-row" href="https://github.com/mohd-maruf-kureshi-2828" target="_blank" rel="noopener noreferrer">
+      <span class="crow-key"><i class="fa-brands fa-github"></i> github</span>
+      <span class="crow-val">@mohd-maruf-kureshi-2828</span>
+      <span class="crow-go"><i class="fa-solid fa-arrow-right"></i></span>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p><span class="pulse-dot small"></span> Write-Host "Built with HTML, CSS &amp; JS — © 2026 Maruf. All rights reserved."</p>
+</footer>
+
+<button class="back-top" id="backTop" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="script.js"></script>
 </body>
-
-
 </html>
+
 
 
 
