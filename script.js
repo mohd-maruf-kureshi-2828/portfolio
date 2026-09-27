@@ -1,3 +1,4 @@
+
 (function initWebGLScene() {
   const canvas = document.getElementById("webglCanvas");
   if (!canvas || typeof THREE === "undefined") return;

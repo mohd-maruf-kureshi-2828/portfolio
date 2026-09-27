@@ -110,11 +110,11 @@
 }
 
 :root[data-theme="light"] .win-btn {
-  color: black;
+  color:black;
 }
 
 :root[data-theme="light"] .tl-win-title {
-  color: black;
+  color:black;
 }
 
 :root[data-theme="light"] .repo-btn {
@@ -425,7 +425,7 @@ body::before {
   right: 24px;
   background: none;
   border: none;
-  color: black;
+  color:black;
   font-size: 1.6rem;
   cursor: pointer;
 }
@@ -665,7 +665,7 @@ body::before {
 #closedNameText {
   font-family: var(--font-display);
   font-weight: 800;
-  color: black;
+  color:black;
   font-size: clamp(1.7rem, 5.5vw, 2.8rem);
   text-shadow: 0 0 30px rgba(56, 189, 248, .3);
   min-height: 1.2em;
@@ -908,7 +908,7 @@ body::before {
 
 .cmd-heading .prompt {
   margin-right: 6px;
-
+  
 }
 
 .section-title {
@@ -916,7 +916,7 @@ body::before {
   font-weight: 700;
   font-size: clamp(1.6rem, 4vw, 2.3rem);
   margin-bottom: 42px;
-  color: rgba(86, 193, 141, 0.963);
+  color:rgba(86, 193, 141, 0.963);
 }
 
 .about-grid {
