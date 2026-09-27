@@ -1,4 +1,3 @@
-// ===== WEBGL 3D SCENE (Three.js) — floating particles + rotating wireframes =====
 (function initWebGLScene() {
   const canvas = document.getElementById("webglCanvas");
   if (!canvas || typeof THREE === "undefined") return;
@@ -14,7 +13,6 @@
   const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 100);
   camera.position.z = 9;
 
-  // --- starfield particle sphere ---
   const particleCount = window.innerWidth < 700 ? 400 : 900;
   const positions = new Float32Array(particleCount * 3);
   for (let i = 0; i < particleCount; i++) {
@@ -38,13 +36,11 @@
   const particles = new THREE.Points(particleGeo, particleMat);
   scene.add(particles);
 
-  // --- one rotating wireframe icosahedron (single, calm) ---
   const geo1 = new THREE.IcosahedronGeometry(2.8, 1);
   const mat1 = new THREE.MeshBasicMaterial({ color: 0x38bdf8, wireframe: true, transparent: true, opacity: 0.18 });
   const wire1 = new THREE.Mesh(geo1, mat1);
   scene.add(wire1);
 
-  // --- mouse parallax ---
   let mouseX = 0, mouseY = 0, targetRotX = 0, targetRotY = 0;
   window.addEventListener("mousemove", (e) => {
     mouseX = (e.clientX / window.innerWidth) * 2 - 1;
@@ -61,7 +57,6 @@
   const clock = new THREE.Clock();
   function animate() {
     const t = clock.getElapsedTime();
-
     wire1.rotation.x = t * 0.06;
     wire1.rotation.y = t * 0.09;
     particles.rotation.y = t * 0.015;
@@ -78,7 +73,6 @@
   animate();
 })();
 
-// ===== Mouse-follow 3D tilt on the hero terminal card =====
 (function initTilt() {
   const card = document.getElementById("tiltCard");
   if (!card) return;
@@ -99,7 +93,6 @@
   });
 })();
 
-// ===== ANIMATED CYBER BACKGROUND (canvas) =====
 (function initBgCanvas() {
   const canvas = document.getElementById("bgCanvas");
   if (!canvas) return;
@@ -121,7 +114,6 @@
     setupCircuits();
   }
 
-  /* ---- Matrix-style code rain ---- */
   const CHARS = "01</>{}[]#$%&*+=~;:function()=>const let var".split("");
   let rainCols = [];
   function setupRain() {
@@ -146,7 +138,6 @@
     });
   }
 
-  /* ---- Glowing circuit traces with traveling pulses ---- */
   let circuits = [];
   function setupCircuits() {
     circuits = [];
@@ -187,16 +178,12 @@
       ctx.strokeStyle = `rgba(${c.color},0.10)`;
       ctx.lineWidth = 1.2 * DPR;
       ctx.stroke();
-
-      // node dots
       c.points.forEach((p) => {
         ctx.beginPath();
         ctx.arc(p.x, p.y, 1.6 * DPR, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(${c.color},0.25)`;
         ctx.fill();
       });
-
-      // traveling pulse
       const pos = pointOnPath(c.points, c.t);
       const grad = ctx.createRadialGradient(pos.x, pos.y, 0, pos.x, pos.y, 8 * DPR);
       grad.addColorStop(0, `rgba(${c.color},0.9)`);
@@ -205,13 +192,11 @@
       ctx.arc(pos.x, pos.y, 8 * DPR, 0, Math.PI * 2);
       ctx.fillStyle = grad;
       ctx.fill();
-
       c.t += c.speed;
       if (c.t > 1) c.t = 0;
     });
   }
 
-  /* ---- Drifting particles (depth dust) ---- */
   let particles = [];
   function setupParticles() {
     const count = Math.floor((W * H) / (26000 * DPR * DPR));
@@ -259,7 +244,6 @@ if (isInstagram) {
   if (banner) banner.style.display = "block";
 }
 
-// ===== Typewriter effect for name in terminal =====
 const nameEl = document.getElementById("typedName");
 const fullName = "Mohamed Maruf Kureshi";
 if (nameEl) {
@@ -274,20 +258,16 @@ if (nameEl) {
   typeName();
 }
 
-// ===== Scroll reveal for sections =====
 const revealObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-      }
+      if (entry.isIntersecting) entry.target.classList.add("visible");
     });
   },
   { threshold: 0.15 }
 );
 document.querySelectorAll(".section").forEach((sec) => revealObserver.observe(sec));
 
-// ===== Active tab highlight on scroll =====
 const tabSections = document.querySelectorAll("section[id]");
 const tabs = document.querySelectorAll(".tab[data-tab]");
 window.addEventListener("scroll", () => {
@@ -301,7 +281,6 @@ window.addEventListener("scroll", () => {
   });
 });
 
-// ===== Mobile menu =====
 const burgerBtn = document.getElementById("burgerBtn");
 const mobileMenu = document.getElementById("mobileMenu");
 const mobileClose = document.getElementById("mobileClose");
@@ -313,7 +292,90 @@ if (burgerBtn && mobileMenu) {
   );
 }
 
-// ===== Back to top button =====
+// ===== Scroll progress bar =====
+(function initScrollProgress() {
+  const bar = document.getElementById("scrollProgress");
+  if (!bar) return;
+  window.addEventListener("scroll", () => {
+    const h = document.documentElement;
+    const scrolled = h.scrollTop;
+    const max = h.scrollHeight - h.clientHeight;
+    bar.style.width = (max > 0 ? (scrolled / max) * 100 : 0) + "%";
+  });
+})();
+
+// ===== Light / Dark mode toggle =====
+(function initThemeToggle() {
+  const root = document.documentElement;
+  const btn = document.getElementById("themeToggle");
+  if (!btn) return;
+  const saved = localStorage.getItem("theme") || "dark";
+  root.setAttribute("data-theme", saved);
+  btn.addEventListener("click", () => {
+    const next = root.getAttribute("data-theme") === "light" ? "dark" : "light";
+    root.setAttribute("data-theme", next);
+    localStorage.setItem("theme", next);
+  });
+})();
+
+// ===== Close / reopen the terminal window (shows the name in its place) =====
+(function initTerminalClose() {
+  const terminal = document.getElementById("tiltCard");
+  const closeBtn = document.getElementById("terminalCloseBtn");
+  const reopenBtn = document.getElementById("reopenTerminalBtn");
+  const reveal = document.getElementById("closedNameReveal");
+  const revealText = document.getElementById("closedNameText");
+  if (!terminal || !closeBtn || !reopenBtn || !reveal || !revealText) return;
+
+  const fullName = "Mohamed Maruf Kureshi";
+  let typeTimer = null;
+
+  function typeReveal() {
+    let i = 0;
+    revealText.textContent = "";
+    clearTimeout(typeTimer);
+    function step() {
+      if (i <= fullName.length) {
+        revealText.textContent = fullName.slice(0, i);
+        i++;
+        typeTimer = setTimeout(step, 60);
+      }
+    }
+    step();
+  }
+
+  function closeTerminal() {
+    terminal.classList.add("closing");
+    terminal.addEventListener(
+      "animationend",
+      () => {
+        terminal.classList.add("hidden-window");
+        reopenBtn.classList.add("show");
+        reveal.classList.add("show");
+        typeReveal();
+      },
+      { once: true }
+    );
+  }
+
+  function reopenTerminal() {
+    terminal.classList.remove("hidden-window", "closing");
+    reopenBtn.classList.remove("show");
+    reveal.classList.remove("show");
+    clearTimeout(typeTimer);
+    revealText.textContent = "";
+  }
+
+  closeBtn.addEventListener("click", closeTerminal);
+  closeBtn.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      closeTerminal();
+    }
+  });
+  reopenBtn.addEventListener("click", reopenTerminal);
+})();
+
 const backTop = document.getElementById("backTop");
 if (backTop) {
   window.addEventListener("scroll", () => {
